@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - CryptoFlow Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>CryptoFlow</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <a href="settings.html" class="nav-link active">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Settings</h1>
+                <div class="settings-actions">
+                    <button class="action-btn" id="saveSettingsBtn">
+                        <i class="fas fa-save"></i>
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-grid">
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>General Preferences</h2>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Default Currency</h4>
+                                <p>Choose your preferred currency for displaying prices</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="currencySelect">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="BTC">BTC - Bitcoin</option>
+                                    <option value="ETH">ETH - Ethereum</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Theme</h4>
+                                <p>Select your preferred color theme</p>
+                            </div>
+                            <div class="setting-control">
+                                <div class="theme-selector">
+                                    <div class="theme-option active" data-theme="dark">
+                                        <div class="theme-preview dark"></div>
+                                        <span>Dark</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="light">
+                                        <div class="theme-preview light"></div>
+                                        <span>Light</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Language</h4>
+                                <p>Choose your preferred language</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="languageSelect">
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="zh">中文</option>
+                                    <option value="ja">日本語</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Auto Refresh</h4>
+                                <p>Automatically refresh data at regular intervals</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="autoRefreshToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item" id="refreshIntervalSetting">
+                            <div class="setting-info">
+                                <h4>Refresh Interval</h4>
+                                <p>How often to refresh the data</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="refreshIntervalSelect">
+                                    <option value="30">30 seconds</option>
+                                    <option value="60">1 minute</option>
+                                    <option value="300">5 minutes</option>
+                                    <option value="600">10 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Portfolio Settings</h2>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Show Portfolio Value</h4>
+                                <p>Display your total portfolio value in the header</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="showPortfolioValue" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Default View</h4>
+                                <p>Default view for the portfolio page</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="portfolioViewSelect">
+                                    <option value="table">Table View</option>
+                                    <option value="cards">Cards View</option>
+                                    <option value="chart">Chart View</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>P&L Calculation</h4>
+                                <p>Method for calculating profit and loss</p>
+                            </div>
+                            <div class="setting-control">
+                                <select id="pnlMethodSelect">
+                                    <option value="fifo">FIFO (First In, First Out)</option>
+                                    <option value="lifo">LIFO (Last In, First Out)</option>
+                                    <option value="average">Average Cost</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Transaction Notifications</h4>
+                                <p>Get notified about transaction confirmations</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="transactionNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Alert Settings</h2>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Price Alerts</h4>
+                                <p>Receive notifications when prices reach target levels</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="priceAlerts" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Volume Alerts</h4>
+                                <p>Get notified about unusual trading volume</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="volumeAlerts">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Market Cap Alerts</h4>
+                                <p>Notifications for significant market cap changes</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="marketCapAlerts">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Alert Sound</h4>
+                                <p>Play sound when alerts are triggered</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="alertSound">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h2>Data & Privacy</h2>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Data Collection</h4>
+                                <p>Allow anonymous usage data collection for improvements</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="dataCollection">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Local Storage</h4>
+                                <p>Store portfolio data locally in your browser</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="localStorage" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Clear Data</h4>
+                                <p>Remove all stored data and reset to defaults</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn danger" id="clearDataBtn">Clear All Data</button>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Export Data</h4>
+                                <p>Download your portfolio and settings data</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn secondary" id="exportDataBtn">Export Data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Confirm Action</h3>
+                <button class="close-btn" id="closeConfirmModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn secondary" id="cancelConfirmBtn">Cancel</button>
+                <button class="btn danger" id="confirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
+

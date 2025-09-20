@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - CryptoFlow Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>CryptoFlow</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="analytics.html" class="nav-link active">Analytics</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Market Analytics</h1>
+                <div class="analytics-controls">
+                    <div class="timeframe-selector">
+                        <button class="time-btn active" data-time="1h">1H</button>
+                        <button class="time-btn" data-time="24h">24H</button>
+                        <button class="time-btn" data-time="7d">7D</button>
+                        <button class="time-btn" data-time="30d">30D</button>
+                    </div>
+                    <button class="action-btn" id="refreshAnalyticsBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="market-overview">
+                    <div class="section-header">
+                        <h2>Market Overview</h2>
+                    </div>
+                    <div class="overview-cards">
+                        <div class="overview-card">
+                            <div class="overview-icon">
+                                <i class="fas fa-chart-area"></i>
+                            </div>
+                            <div class="overview-content">
+                                <h4>Fear & Greed Index</h4>
+                                <div class="overview-value" id="fearGreedIndex">50</div>
+                                <div class="overview-label">Neutral</div>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="overview-content">
+                                <h4>Market Sentiment</h4>
+                                <div class="overview-value" id="marketSentiment">Bullish</div>
+                                <div class="overview-label">Positive</div>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">
+                                <i class="fas fa-trending-up"></i>
+                            </div>
+                            <div class="overview-content">
+                                <h4>Volatility</h4>
+                                <div class="overview-value" id="volatility">High</div>
+                                <div class="overview-label">24h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-chart-section">
+                    <div class="section-header">
+                        <h2>Price Analysis</h2>
+                        <div class="chart-controls">
+                            <select class="filter-select" id="assetSelect">
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="BNB">BNB (BNB)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-container large">
+                        <canvas id="priceAnalysisChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="technical-indicators">
+                    <div class="section-header">
+                        <h2>Technical Indicators</h2>
+                    </div>
+                    <div class="indicators-grid">
+                        <div class="indicator-card">
+                            <h4>RSI (14)</h4>
+                            <div class="indicator-value" id="rsiValue">45.2</div>
+                            <div class="indicator-status neutral">Neutral</div>
+                        </div>
+                        <div class="indicator-card">
+                            <h4>MACD</h4>
+                            <div class="indicator-value" id="macdValue">-0.45</div>
+                            <div class="indicator-status negative">Bearish</div>
+                        </div>
+                        <div class="indicator-card">
+                            <h4>Moving Average (50)</h4>
+                            <div class="indicator-value" id="ma50Value">$42,850</div>
+                            <div class="indicator-status positive">Above</div>
+                        </div>
+                        <div class="indicator-card">
+                            <h4>Moving Average (200)</h4>
+                            <div class="indicator-value" id="ma200Value">$38,920</div>
+                            <div class="indicator-status positive">Above</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-cap-dominance">
+                    <div class="section-header">
+                        <h2>Market Cap Dominance</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="dominanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="volume-analysis">
+                    <div class="section-header">
+                        <h2>Volume Analysis</h2>
+                    </div>
+                    <div class="volume-stats">
+                        <div class="volume-item">
+                            <span class="volume-label">24h Volume</span>
+                            <span class="volume-value" id="volume24h">$89.2B</span>
+                        </div>
+                        <div class="volume-item">
+                            <span class="volume-label">Volume Change</span>
+                            <span class="volume-value positive" id="volumeChange">+12.8%</span>
+                        </div>
+                        <div class="volume-item">
+                            <span class="volume-label">Avg Volume (7d)</span>
+                            <span class="volume-value" id="avgVolume7d">$76.4B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="correlation-matrix">
+                    <div class="section-header">
+                        <h2>Asset Correlation</h2>
+                    </div>
+                    <div class="correlation-table-wrapper">
+                        <table class="correlation-table" id="correlationTable">
+                            <thead>
+                                <tr>
+                                    <th>Assets</th>
+                                    <th>BTC</th>
+                                    <th>ETH</th>
+                                    <th>BNB</th>
+                                    <th>SOL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>BTC</strong></td>
+                                    <td class="correlation-value">1.00</td>
+                                    <td class="correlation-value">0.78</td>
+                                    <td class="correlation-value">0.65</td>
+                                    <td class="correlation-value">0.72</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ETH</strong></td>
+                                    <td class="correlation-value">0.78</td>
+                                    <td class="correlation-value">1.00</td>
+                                    <td class="correlation-value">0.69</td>
+                                    <td class="correlation-value">0.81</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>BNB</strong></td>
+                                    <td class="correlation-value">0.65</td>
+                                    <td class="correlation-value">0.69</td>
+                                    <td class="correlation-value">1.00</td>
+                                    <td class="correlation-value">0.58</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SOL</strong></td>
+                                    <td class="correlation-value">0.72</td>
+                                    <td class="correlation-value">0.81</td>
+                                    <td class="correlation-value">0.58</td>
+                                    <td class="correlation-value">1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="analytics.js"></script>
+</body>
+</html>
+

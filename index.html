@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoFlow Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>CryptoFlow</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Portfolio</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Market Overview</h1>
+                <div class="refresh-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Refresh</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Market Cap</h3>
+                        <div class="stat-value" id="totalMarketCap">$2.1T</div>
+                        <div class="stat-change positive" id="marketCapChange">+2.4%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24h Volume</h3>
+                        <div class="stat-value" id="volume24h">$89.2B</div>
+                        <div class="stat-change positive" id="volumeChange">+12.8%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Active Coins</h3>
+                        <div class="stat-value" id="activeCoins">8,945</div>
+                        <div class="stat-change positive" id="coinsChange">+23</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Market Dominance</h3>
+                        <div class="stat-value" id="dominance">BTC 42.3%</div>
+                        <div class="stat-change negative" id="dominanceChange">-1.2%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="crypto-table-container">
+                    <div class="section-header">
+                        <h2>Top Cryptocurrencies</h2>
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" data-view="table">Table</button>
+                            <button class="toggle-btn" data-view="cards">Cards</button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="crypto-table" id="cryptoTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>24h Change</th>
+                                    <th>Market Cap</th>
+                                    <th>Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cryptoTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="trending-section">
+                    <div class="section-header">
+                        <h2>Trending</h2>
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="trending-list" id="trendingList">
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="section-header">
+                    <h2>Price Chart</h2>
+                    <div class="timeframe-selector">
+                        <button class="time-btn active" data-time="1h">1H</button>
+                        <button class="time-btn" data-time="24h">24H</button>
+                        <button class="time-btn" data-time="7d">7D</button>
+                        <button class="time-btn" data-time="30d">30D</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

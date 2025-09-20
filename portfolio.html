@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - CryptoFlow Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>CryptoFlow</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="portfolio.html" class="nav-link active">Portfolio</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>My Portfolio</h1>
+                <div class="portfolio-actions">
+                    <button class="action-btn" id="addAssetBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Asset</span>
+                    </button>
+                    <button class="action-btn secondary" id="refreshPortfolioBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="portfolio-stats">
+                <div class="stat-card portfolio-summary">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Portfolio Value</h3>
+                        <div class="stat-value" id="totalPortfolioValue">$0.00</div>
+                        <div class="stat-change" id="portfolioChange">+0.00%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24h Change</h3>
+                        <div class="stat-value" id="portfolio24hChange">$0.00</div>
+                        <div class="stat-change" id="portfolio24hPercent">+0.00%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Best Performer</h3>
+                        <div class="stat-value" id="bestPerformer">N/A</div>
+                        <div class="stat-change positive" id="bestPerformerChange">+0.00%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Assets Count</h3>
+                        <div class="stat-value" id="assetsCount">0</div>
+                        <div class="stat-change" id="assetsChange">+0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="portfolio-table-container">
+                    <div class="section-header">
+                        <h2>My Holdings</h2>
+                        <div class="portfolio-filters">
+                            <select class="filter-select" id="sortSelect">
+                                <option value="value">Sort by Value</option>
+                                <option value="change">Sort by 24h Change</option>
+                                <option value="name">Sort by Name</option>
+                                <option value="percentage">Sort by Allocation</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="portfolio-table" id="portfolioTable">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Holdings</th>
+                                    <th>Avg. Buy Price</th>
+                                    <th>Current Price</th>
+                                    <th>Value</th>
+                                    <th>24h Change</th>
+                                    <th>P&L</th>
+                                    <th>Allocation</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="portfolioTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="allocation-chart-container">
+                    <div class="section-header">
+                        <h2>Portfolio Allocation</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transaction-history">
+                <div class="section-header">
+                    <h2>Transaction History</h2>
+                    <div class="history-filters">
+                        <select class="filter-select" id="transactionFilter">
+                            <option value="all">All Transactions</option>
+                            <option value="buy">Buy Orders</option>
+                            <option value="sell">Sell Orders</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="transaction-table" id="transactionTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Asset</th>
+                                <th>Amount</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="addAssetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Asset</h3>
+                <button class="close-btn" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="addAssetForm">
+                <div class="form-group">
+                    <label for="assetSelect">Select Asset</label>
+                    <select id="assetSelect" required>
+                        <option value="">Choose an asset</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amountInput">Amount</label>
+                    <input type="number" id="amountInput" step="0.00000001" required>
+                </div>
+                <div class="form-group">
+                    <label for="buyPriceInput">Buy Price (USD)</label>
+                    <input type="number" id="buyPriceInput" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="transactionDateInput">Transaction Date</label>
+                    <input type="date" id="transactionDateInput" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn primary">Add Asset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
+
